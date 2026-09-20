@@ -1,4 +1,70 @@
-/target
+# =============================================================================
+# Glia Rust Client SDK — .gitignore
+# =============================================================================
+
+### --- Rust & Cargo Specifics ---
+/target/
+target/
 **/*.rs.bk
-.DS_Store
+*.bk
+
+# Compiled binaries and shared libraries
+*.dylib
+*.so
+*.dll
+*.pdb
+
+# Profiling and coverage
+*.profraw
+*.profdata
+lcov.info
+
+### --- Common: Environment & Secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+### --- Common: Internal Tools & Audits ---
 .microglia/
+
+### --- Common: Editors & IDEs ---
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains / CLion / RustRover
+.idea/
+*.iml
+
+# Temporary & Swap Files
+*.swp
+*.swo
+*~
+*.bak
+
+### --- Common: Operating Systems ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+
+# Linux
+*~
+
+### --- Common: Logs & Test Reports ---
+*.log
+reports/
+test-results/
