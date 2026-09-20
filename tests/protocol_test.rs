@@ -3,23 +3,23 @@ use serde_json::json;
 
 #[test]
 fn test_phoenix_frame_serialization() {
-    let frame = PhoenixFrame::join("session:nutrisnaps:user_123", "1");
+    let frame = PhoenixFrame::join("session:demo_app:user_123", "1");
     let json_str = frame.to_json().expect("Frame must serialize");
 
     assert_eq!(
         json_str,
-        r#"["1","1","session:nutrisnaps:user_123","phx_join",{}]"#
+        r#"["1","1","session:demo_app:user_123","phx_join",{}]"#
     );
 }
 
 #[test]
 fn test_phoenix_frame_deserialization() {
-    let raw = r#"["1","1","session:nutrisnaps:user_123","phx_reply",{"response":{},"status":"ok"}]"#;
+    let raw = r#"["1","1","session:demo_app:user_123","phx_reply",{"response":{},"status":"ok"}]"#;
     let frame = PhoenixFrame::from_json(raw).expect("Frame must deserialize");
 
     assert_eq!(frame.join_ref, Some("1".to_string()));
     assert_eq!(frame.reference, Some("1".to_string()));
-    assert_eq!(frame.topic, "session:nutrisnaps:user_123");
+    assert_eq!(frame.topic, "session:demo_app:user_123");
     assert_eq!(frame.event, "phx_reply");
     assert_eq!(frame.payload.get("status").unwrap(), "ok");
 }
